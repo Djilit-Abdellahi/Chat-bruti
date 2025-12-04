@@ -1,0 +1,14 @@
+# Python System
+__pycache__/
+*.pyc
+venv/
+
+# Secrets (CRITICAL)
+.env
+.env.local
+
+# Node/Frontend
+node_modules/
+.next/
+dist/
+.DS_Store
