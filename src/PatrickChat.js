@@ -5,34 +5,20 @@ import "./PatrickChat.css";
 const PATRICK_AVATAR = "./patrick.png";
 const USER_AVATAR = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
-const PATRICK_QUOTES = [
-  "Is mayonnaise an instrument?",
-  "No, this is Patrick!",
-  "I wumbo, you wumbo, he she me wumbo...",
-  "Leedle leedle leedle lee.",
-  "I can't see my forehead!",
-  "Knowledge cannot replace friendship. I prefer to be an idiot!",
-  "I'm ready, I'm ready, I'm ready!",
-  "Is this the Krusty Krab?",
-  "Tubby? No, I'm not tubby!",
-  "Once there was an ugly barnacle. He was so ugly that everyone died. The end.",
-  "Rectangles!",
-  "The inner machinations of my mind are an enigma.",
-  "Firmly grasp it!",
-  "Who you callin' Pinhead?",
-];
+// URL de votre backend FastAPI
+const API_URL = "https://chat-bruti-back-end.onrender.com/chat";
 
 const PatrickChat = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Patrick. Do you want to go jellyfishing?",
+      text: "Hi! I'm Patrick Lmubeydel. Do you want to go jellyfishing?",
       sender: "bot",
     },
   ]);
   const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [showSurprise, setShowSurprise] = useState(false);
+  const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -43,7 +29,7 @@ const PatrickChat = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputText.trim() === "") return;
 
     const newMessage = {
@@ -53,28 +39,50 @@ const PatrickChat = () => {
     };
 
     setMessages((prev) => [...prev, newMessage]);
+    const userInput = inputText;
     setInputText("");
     setIsTyping(true);
+    setError(null);
 
-    // Animation surprise aléatoire (20% de chance)
-    if (Math.random() < 0.2) {
-      setTimeout(() => {
-        setShowSurprise(true);
-        setTimeout(() => setShowSurprise(false), 2000);
-      }, 500);
-    }
+    try {
+      // Appel API au backend FastAPI
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: userInput }),
+      });
 
-    setTimeout(() => {
-      const randomQuote =
-        PATRICK_QUOTES[Math.floor(Math.random() * PATRICK_QUOTES.length)];
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Ajouter la réponse du bot
       const botResponse = {
         id: Date.now() + 1,
-        text: randomQuote,
+        text: data.response || "Hmm... je suis perdu dans mes pensées 🤔",
         sender: "bot",
+        status: data.status,
       };
+
       setMessages((prev) => [...prev, botResponse]);
       setIsTyping(false);
-    }, 1500);
+    } catch (err) {
+      console.error("Erreur lors de l'appel API:", err);
+      setError("Oups! Patrick a perdu la connexion 🌊");
+
+      const errorMessage = {
+        id: Date.now() + 1,
+        text: "Désolé, j'ai perdu ma connexion au fond de l'océan... 🐚 Réessaye plus tard!",
+        sender: "bot",
+      };
+
+      setMessages((prev) => [...prev, errorMessage]);
+      setIsTyping(false);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -125,15 +133,6 @@ const PatrickChat = () => {
         ))}
       </div>
 
-      {/* Surprise Patrick */}
-      <div className={`surprise-patrick ${showSurprise ? "show" : ""}`}>
-        <img
-          src={PATRICK_AVATAR}
-          alt="Surprise Patrick"
-          className="surprise-img"
-        />
-      </div>
-
       {/* Header */}
       <header className="chat-header">
         <div className="avatar-wrapper">
@@ -141,10 +140,13 @@ const PatrickChat = () => {
           <div className="status-dot" />
         </div>
         <div className="header-info">
-          <h1>Patrick lmoubeydel </h1>
+          <h1>Patrick Lmoubeydel </h1>
           <p>Chat bruitant </p>
         </div>
       </header>
+
+      {/* Error Display */}
+      {error && <div className="error-banner">⚠️ {error}</div>}
 
       {/* Messages Area */}
       <div className="messages-area">
@@ -162,6 +164,8 @@ const PatrickChat = () => {
             <div
               className={`message-bubble ${
                 msg.sender === "user" ? "user-bubble" : "bot-bubble"
+              } ${msg.status === "amnesia" ? "amnesia-bubble" : ""} ${
+                msg.status === "paywall" ? "paywall-bubble" : ""
               }`}
             >
               {msg.text}
@@ -196,16 +200,18 @@ const PatrickChat = () => {
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={handleKeyPress}
           className="chat-input"
+          disabled={isTyping}
         />
         <button
           onClick={handleSendMessage}
-          disabled={!inputText.trim()}
+          disabled={!inputText.trim() || isTyping}
           className="send-button"
         >
-          SEND 🪼
+          {isTyping ? "..." : "SEND 🪼"}
         </button>
       </div>
     </div>
   );
 };
+
 export default PatrickChat;
