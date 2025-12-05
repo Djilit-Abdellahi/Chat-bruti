@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# 🌊 Chat'Bruti: Patrick Lmoubeydel Edition (Front-End)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*"The only chatbot guaranteed to lower your IQ while raising your spirits."*  
+*(The signature "Fond de Merou" interface) 🐚*
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Welcome to the Front-End of **Chat'Bruti**, the deliberately useless chatbot. While other AIs strive for accuracy and speed, **Patrick Lmoubeydel** strives for confident confusion and poetic nonsense.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This React application provides the immersive visual stage for our "Anti-Assistant." It doesn't just display text; it transports the user to a world where **logic is optional and vibes are mandatory**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🔗 **Live Demo:** [patrick-lmoubeydel.netlify.app](https://patrick-lmoubeydel.netlify.app/)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🕵️‍♂️ The Main Challenge: N.I.R.D. OS Integration
 
-### `npm run build`
+This application serves as the core of the **National Challenge (Défi Principal)**.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As part of this challenge, we provide a specific URL that drastically transforms the user experience. When accessed via this challenge link, the cheerful ocean vibes are replaced by the tactical **N.I.R.D. OS platform**, where Patrick has been "recruited" as the **IA d'assistance (Support AI)**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Don't let the serious hacker aesthetics fool you—his advice in this mode remains as **deliciously useless as ever**.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*(Patrick integrated into the N.I.R.D. OS. Note his status in the top-left "Support Tactique" module.)*
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⭐️ The Muse: Who is Patrick Lmoubeydel?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The character is the heart of this project, born from a fusion of **pop culture** and **Mauritanian slang**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. The Inspiration: Patrick Star 🌟
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We channeled the energy of **Patrick Star** (*SpongeBob SquarePants*)—the archetype of joyful ignorance.  
+He is our spirit animal: **doing stupid things with maximum enthusiasm**.
 
-## Learn More
+### 2. The Surname: "Lmoubeydel" (The Cultural Twist) 🇲🇷
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The name isn't just a sound; it's a definition.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Lmoubeydel (Hassaniya / Mauritanian Arabic)**:  
+*Adjective.* Describes a person who is **foolish but incredibly confident**.  
 
-### Code Splitting
+This definition drives the AI's behavior: Patrick is **factually wrong 100% of the time**, but he delivers his nonsense with the **authority of a sage**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🎨 Visual Identity & UX
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+We didn't want a boring white chat window. We wanted an **experience**.
 
-### Making a Progressive Web App
+- **The Setting (Le Fond de Merou):**  
+  Places the user in a surreal fusion of Bikini Bottom and Mauritanian atmosphere. A desert-ocean hybrid vibe.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **The Costume (Le Boubou Royal):**  
+  Patrick is draped in a traditional Mauritanian **Boubou (Drâa)**. Reinforces his status as a "Local Guru"—nonsensical wisdom looks even funnier.
 
-### Advanced Configuration
+- **The Interface:**  
+  - Pink Bubbles: Matches Patrick’s skin tone  
+  - Jellyfish Send Button: Standard arrows are boring  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🛠️ Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Component       | Technology              | Usage                                          |
+|-----------------|------------------------|-----------------------------------------------|
+| Framework       | React.js               | Core library for component-based UI          |
+| Styling         | CSS3 / Styled-Components | Custom animations, bubbles, responsive layout |
+| State Management| React Hooks            | Manage chat history and "Loading" states     |
+| Deployment      | Netlify                | CI/CD and hosting                             |
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🚀 Getting Started Locally
+
+Want to run Patrick on your own machine?  
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/your-username/chat-bruti-frontend.git
+cd chat-bruti-frontend
