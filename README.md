@@ -15,15 +15,14 @@ This React application provides the immersive visual stage for our "Anti-Assista
 
 ---
 
-## 🕵️‍♂️ The Main Challenge: N.I.R.D. OS Integration
+## 🕵️‍♂️ ### 📸 ChatGPT Integration in the N.I.R.D. OS
 
-This application serves as the core of the **National Challenge (Défi Principal)**.  
+Below is the placement of **Patrick Lmoubeydel / ChatGPT** in the challenge interface.  
+Notice the **"Support Tactique" module** in the top-left, where the chatbot provides its quirky, useless guidance:
 
-As part of this challenge, we provide a specific URL that drastically transforms the user experience. When accessed via this challenge link, the cheerful ocean vibes are replaced by the tactical **N.I.R.D. OS platform**, where Patrick has been "recruited" as the **IA d'assistance (Support AI)**.
+![Patrick Lmoubeydel in N.I.R.D. OS](images/patrick_nird_integration.png)
+*Patrick delivering nonsensical but charming advice, powered by ChatGPT.*
 
-Don't let the serious hacker aesthetics fool you—his advice in this mode remains as **deliciously useless as ever**.  
-
-*(Patrick integrated into the N.I.R.D. OS. Note his status in the top-left "Support Tactique" module.)*
 
 ---
 
