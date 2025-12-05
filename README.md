@@ -20,7 +20,7 @@ This React application provides the immersive visual stage for our "Anti-Assista
 Below is the placement of **Patrick Lmoubeydel / ChatGPT** in the challenge interface.  
 Notice the **"Support Tactique" module** in the top-left, where the chatbot provides its quirky, useless guidance:
 
-![Patrick Lmoubeydel in N.I.R.D. OS](images/patrick_nird_integration.png)
+![Patrick Lmoubeydel in N.I.R.D. OS](public/patrick_nird_integration.png)
 *Patrick delivering nonsensical but charming advice, powered by ChatGPT.*
 
 
