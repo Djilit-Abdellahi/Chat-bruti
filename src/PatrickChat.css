@@ -21,32 +21,32 @@
   height: 100vh;
   width: 100%;
   margin: 0;
-  background: url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
-    center center / cover no-repeat;
+  background:
+    /* Image de Patrick à gauche (petite et fixe) */ url("/public/patrick-house.png")
+      left 30px bottom 50px / 180px auto no-repeat,
+    /* Fond océan */
+      url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
+      center center / cover no-repeat;
   font-family: var(--font-toon);
   overflow: hidden;
   position: relative;
-  animation: background-gentle-move 60s ease-in-out infinite;
 }
 
-@keyframes background-gentle-move {
-  0%,
-  100% {
-    background-position: center center;
-    background-size: 100% auto;
-  }
-  25% {
-    background-position: 55% center;
-    background-size: 105% auto;
-  }
-  50% {
-    background-position: center 55%;
-    background-size: 100% auto;
-  }
-  75% {
-    background-position: 45% center;
-    background-size: 105% auto;
-  }
+/* Effet de brillance sur Patrick */
+.chat-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 15% 70%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 30%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* === FOND OCÉAN AVEC OVERLAY === */
@@ -154,18 +154,6 @@
   }
 }
 
-/* === MAISON DE PATRICK (GIF INTÉGRÉ AU BACKGROUND) === */
-.patrick-rock-gif {
-  position: absolute;
-  bottom: 50px;
-  left: 5%;
-  width: 280px;
-  height: 280px;
-  object-fit: contain;
-  z-index: 3;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-}
-
 /* Sol sableux */
 .sandy-floor {
   position: absolute;
@@ -211,7 +199,7 @@
 /* === HEADER (STYLE SHORT DE PATRICK) === */
 .chat-header {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -330,14 +318,16 @@
   flex-direction: column;
   gap: 1rem;
   position: relative;
-  z-index: 10;
+  z-index: 20;
 }
 
+/* Empêcher les messages de passer sur l'image */
 .message-row {
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
   animation: popIn 0.3s ease-out;
+  max-width: 75%; /* Limite la largeur pour ne pas dépasser sur l'image */
 }
 
 @keyframes popIn {
@@ -363,7 +353,6 @@
 .chat-avatar {
   width: 2.5rem;
   height: auto;
-
   border-radius: 50%;
   border: 2px solid var(--white);
   background: var(--white);
@@ -378,7 +367,8 @@
   line-height: 1.4;
   position: relative;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
-  max-width: 28rem;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .bot-bubble {
@@ -444,6 +434,7 @@
   border: 3px solid var(--patrick-pink);
   font-family: var(--font-toon);
   transition: all 0.3s;
+  margin-left: 200px; /* Espace pour l'image à gauche */
 }
 
 .chat-input:focus {
@@ -495,18 +486,32 @@
 }
 
 /* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .chat-container {
+    background: url("/public/patrick-house.png") left 20px bottom 40px / 150px
+        auto no-repeat,
+      url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
+        center center / cover no-repeat;
+  }
+
+  .chat-input {
+    margin-left: 160px;
+  }
+}
+
 @media (max-width: 768px) {
   .header-info h1 {
     font-size: 1.25rem;
   }
 
   .message-bubble {
-    max-width: 80%;
+    max-width: 90%;
     font-size: 1rem;
   }
 
   .chat-input {
     font-size: 1rem;
+    margin-left: 140px;
   }
 
   .send-button {
@@ -519,9 +524,57 @@
     height: 12rem;
   }
 
-  /* SUPPRIMÉ: Styles responsive pour .pineapple-house */
-  .patrick-rock-gif {
-    width: 120px;
-    height: 120px;
+  .chat-container {
+    background: url("/public/patrick-house.png") left 15px bottom 30px / 120px
+        auto no-repeat,
+      url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
+        center center / cover no-repeat;
+  }
+
+  .message-row {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    background: url("/public/patrick-house.png") left 10px bottom 20px / 100px
+        auto no-repeat,
+      url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
+        center center / cover no-repeat;
+  }
+
+  .surprise-patrick {
+    width: 10rem;
+    height: 10rem;
+    bottom: 4rem;
+    right: 1rem;
+  }
+
+  .chat-input {
+    margin-left: 110px;
+    padding: 0.75rem 1rem;
+  }
+
+  .send-button {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .message-row {
+    max-width: 90%;
+  }
+}
+
+/* Style pour très petits écrans */
+@media (max-width: 360px) {
+  .chat-container {
+    background: url("/public/patrick-house.png") left 5px bottom 15px / 80px
+        auto no-repeat,
+      url("https://i.pinimg.com/1200x/e7/d9/4a/e7d94a685fa9cc78f59ebf0816327533.jpg")
+        center center / cover no-repeat;
+  }
+
+  .chat-input {
+    margin-left: 85px;
   }
 }
